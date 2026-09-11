@@ -20,6 +20,33 @@ export type StellarToml = {
   DOCUMENTATION: StellarDocumentation;
 };
 
+const KNOWN_PLACEHOLDER_VALUES = new Set([
+  "TODO",
+  "G...YOUR_ISSUER_PUBLIC_KEY...",
+]);
+
+/** True when a stellar.toml string value is still the unfilled template placeholder. */
+export function isPlaceholderValue(value: string): boolean {
+  if (typeof value !== "string") return false;
+  const trimmed = value.trim();
+  if (KNOWN_PLACEHOLDER_VALUES.has(trimmed)) return true;
+  return trimmed.toUpperCase().startsWith("TODO");
+}
+
+/** True when any string field in the parsed toml is still a placeholder. */
+export function tomlHasPlaceholders(toml: StellarToml): boolean {
+  if (isPlaceholderValue(toml.DOCUMENTATION.ORG_NAME)) return true;
+  if (isPlaceholderValue(toml.DOCUMENTATION.ORG_OFFICIAL_EMAIL)) return true;
+  return toml.CURRENCIES.some(
+    (c) =>
+      isPlaceholderValue(c.code) ||
+      isPlaceholderValue(c.issuer) ||
+      isPlaceholderValue(c.name) ||
+      isPlaceholderValue(c.desc) ||
+      isPlaceholderValue(c.conditions),
+  );
+}
+
 function stripComment(line: string): string {
   let inString = false;
   for (let i = 0; i < line.length; i++) {

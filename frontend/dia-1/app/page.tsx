@@ -10,6 +10,8 @@ import { fetchAssetInfo, type AssetInfo } from "@/lib/stellar/contract";
 import { toUserErrorMessage } from "@/lib/errors";
 import {
   fetchStellarToml,
+  isPlaceholderValue,
+  tomlHasPlaceholders,
   type StellarCurrency,
   type StellarToml,
 } from "@/lib/stellar-toml";
@@ -154,14 +156,30 @@ function CurrencyFields({ currency }: { currency: StellarCurrency }) {
     <dl className="grid min-w-0 gap-3 sm:grid-cols-2">
       <div className="min-w-0">
         <dt className="text-label uppercase text-text-muted">code</dt>
-        <dd className="mt-1 font-mono text-data text-text-primary">
-          {currency.code}
+        <dd className="mt-1">
+          {isPlaceholderValue(currency.code) ? (
+            <span className="inline-flex items-center rounded-sm border border-dashed border-border-default px-2 py-1 text-label uppercase text-text-muted">
+              Not set
+            </span>
+          ) : (
+            <span className="font-mono text-data text-text-primary">
+              {currency.code}
+            </span>
+          )}
         </dd>
       </div>
       <div className="min-w-0">
         <dt className="text-label uppercase text-text-muted">issuer</dt>
-        <dd className="mt-1 break-all font-mono text-body-sm text-text-primary">
-          {currency.issuer}
+        <dd className="mt-1">
+          {isPlaceholderValue(currency.issuer) ? (
+            <span className="inline-flex items-center rounded-sm border border-dashed border-border-default px-2 py-1 text-label uppercase text-text-muted">
+              Not set
+            </span>
+          ) : (
+            <span className="break-all font-mono text-body-sm text-text-primary">
+              {currency.issuer}
+            </span>
+          )}
         </dd>
       </div>
       <div className="min-w-0">
@@ -180,20 +198,44 @@ function CurrencyFields({ currency }: { currency: StellarCurrency }) {
       </div>
       <div className="min-w-0 sm:col-span-2">
         <dt className="text-label uppercase text-text-muted">name</dt>
-        <dd className="mt-1 break-words text-body text-text-primary">
-          {currency.name}
+        <dd className="mt-1">
+          {isPlaceholderValue(currency.name) ? (
+            <span className="inline-flex items-center rounded-sm border border-dashed border-border-default px-2 py-1 text-label uppercase text-text-muted">
+              Not set
+            </span>
+          ) : (
+            <span className="break-words text-body text-text-primary">
+              {currency.name}
+            </span>
+          )}
         </dd>
       </div>
       <div className="min-w-0 sm:col-span-2">
         <dt className="text-label uppercase text-text-muted">desc</dt>
-        <dd className="mt-1 break-words text-body text-text-primary">
-          {currency.desc}
+        <dd className="mt-1">
+          {isPlaceholderValue(currency.desc) ? (
+            <span className="inline-flex items-center rounded-sm border border-dashed border-border-default px-2 py-1 text-label uppercase text-text-muted">
+              Not set
+            </span>
+          ) : (
+            <span className="break-words text-body text-text-primary">
+              {currency.desc}
+            </span>
+          )}
         </dd>
       </div>
       <div className="min-w-0 sm:col-span-2">
         <dt className="text-label uppercase text-text-muted">conditions</dt>
-        <dd className="mt-1 break-words text-body text-text-primary">
-          {currency.conditions}
+        <dd className="mt-1">
+          {isPlaceholderValue(currency.conditions) ? (
+            <span className="inline-flex items-center rounded-sm border border-dashed border-border-default px-2 py-1 text-label uppercase text-text-muted">
+              Not set
+            </span>
+          ) : (
+            <span className="break-words text-body text-text-primary">
+              {currency.conditions}
+            </span>
+          )}
         </dd>
       </div>
     </dl>
@@ -274,6 +316,13 @@ function Sep1Panel() {
       }
     >
       <div className="min-w-0 space-y-6">
+        {tomlHasPlaceholders(toml) && (
+          <div className="rounded-sm border border-semantic-warning/30 bg-semantic-warning/10 px-4 py-3 text-body-sm text-semantic-warning">
+            This stellar.toml is still the unfilled template. Replace every TODO
+            field with your real org and asset details before showing this to
+            anyone.
+          </div>
+        )}
         <p className="text-body-sm text-text-secondary">
           SEP-1 is the Stellar standard for publishing a{" "}
           <code className="font-mono text-mono text-text-primary">
@@ -296,16 +345,32 @@ function Sep1Panel() {
               <dt className="text-label uppercase text-text-muted">
                 ORG_NAME
               </dt>
-              <dd className="mt-1 break-words text-body text-text-primary">
-                {toml.DOCUMENTATION.ORG_NAME}
+              <dd className="mt-1">
+                {isPlaceholderValue(toml.DOCUMENTATION.ORG_NAME) ? (
+                  <span className="inline-flex items-center rounded-sm border border-dashed border-border-default px-2 py-1 text-label uppercase text-text-muted">
+                    Not set
+                  </span>
+                ) : (
+                  <span className="break-words text-body text-text-primary">
+                    {toml.DOCUMENTATION.ORG_NAME}
+                  </span>
+                )}
               </dd>
             </div>
             <div className="min-w-0">
               <dt className="text-label uppercase text-text-muted">
                 ORG_OFFICIAL_EMAIL
               </dt>
-              <dd className="mt-1 break-words text-body text-text-primary">
-                {toml.DOCUMENTATION.ORG_OFFICIAL_EMAIL}
+              <dd className="mt-1">
+                {isPlaceholderValue(toml.DOCUMENTATION.ORG_OFFICIAL_EMAIL) ? (
+                  <span className="inline-flex items-center rounded-sm border border-dashed border-border-default px-2 py-1 text-label uppercase text-text-muted">
+                    Not set
+                  </span>
+                ) : (
+                  <span className="break-words text-body text-text-primary">
+                    {toml.DOCUMENTATION.ORG_OFFICIAL_EMAIL}
+                  </span>
+                )}
               </dd>
             </div>
           </dl>
