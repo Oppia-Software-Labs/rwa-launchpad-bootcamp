@@ -5,14 +5,14 @@ VERSION = "1.0.0"
 NETWORK_PASSPHRASE = "Test SDF Network ; September 2015"
 
 [[CURRENCIES]]
-code = "TODO"
-issuer = "G...YOUR_ISSUER_PUBLIC_KEY..."
+code = "OPPIARWA"
+issuer = "GBA7WMQBZ7WYEDZN3CUZVLVFHCJWI245AKVHOYHWAPRAYC5SBFQLKO6J"
 status = "live"
 display_decimals = 2
-name = "TODO: Asset display name"
-desc = "TODO: Short description of your RWA token"
-conditions = "TODO: What real-world asset backs this token (property, receivables, etc.)"
+name = "Oppia RWA Launchpad Demo Token"
+desc = "Example tokenized real-world asset used to demo the Día 1 initialize flow of the RWA Launchpad contract."
+conditions = "Demo asset for the Oppia Stellar Bolivia bootcamp only. Not backed by any real-world asset."
 
 [DOCUMENTATION]
-ORG_NAME = "TODO: Your organization legal name"
-ORG_OFFICIAL_EMAIL = "TODO: contact@yourdomain.com"
+ORG_NAME = "Oppia Software Labs"
+ORG_OFFICIAL_EMAIL = "info@oppiasoftwarelabs.com"
