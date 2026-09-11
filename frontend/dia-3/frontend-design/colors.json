@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "version": "0.1",
+    "status": "working-draft",
+    "note": "Valores base inferidos de la dirección visual pública de Oppia Branding. Confirmar contra los estilos exactos de Figma."
+  },
+  "color": {
+    "bg": {
+      "canvas": "#080A0D",
+      "surface": "#101318",
+      "elevated": "#171C23",
+      "soft": "#202631"
+    },
+    "border": {
+      "default": "#2B323D",
+      "subtle": "#202631"
+    },
+    "text": {
+      "primary": "#F5F7FA",
+      "secondary": "#A2ACB9",
+      "muted": "#697483"
+    },
+    "brand": {
+      "blue": "#2F80FF",
+      "cyan": "#58D9FF",
+      "gradient": "linear-gradient(135deg, #2368F2 0%, #58D9FF 100%)"
+    },
+    "semantic": {
+      "success": "#35D39A",
+      "warning": "#F4C95D",
+      "danger": "#FF647C",
+      "info": "#70A7FF"
+    }
+  }
+}

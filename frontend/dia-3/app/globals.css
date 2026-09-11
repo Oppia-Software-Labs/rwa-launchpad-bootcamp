@@ -1,0 +1,64 @@
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
+@theme inline {
+  --color-bg-canvas: #080a0d;
+  --color-bg-surface: #101318;
+  --color-bg-elevated: #171c23;
+  --color-bg-soft: #202631;
+
+  --color-border-default: #2b323d;
+  --color-border-subtle: #202631;
+
+  --color-text-primary: #f5f7fa;
+  --color-text-secondary: #a2acb9;
+  --color-text-muted: #697483;
+
+  --color-brand-blue: #2f80ff;
+  --color-brand-cyan: #58d9ff;
+
+  --color-semantic-success: #35d39a;
+  --color-semantic-warning: #f4c95d;
+  --color-semantic-danger: #ff647c;
+  --color-semantic-info: #70a7ff;
+
+  --font-sans: var(--font-inter), Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+  --spacing-24: 96px;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply min-h-screen bg-bg-canvas font-sans text-text-primary antialiased;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, #2f80ff 40%, transparent);
+  }
+}
+
+@layer utilities {
+  .bg-brand-gradient {
+    background-image: linear-gradient(135deg, #2368f2 0%, #58d9ff 100%);
+  }
+}
