@@ -139,26 +139,26 @@ function AssetInfoPanel() {
 
 function CurrencyFields({ currency }: { currency: StellarCurrency }) {
   return (
-    <dl className="grid gap-3 sm:grid-cols-2">
-      <div>
+    <dl className="grid min-w-0 gap-3 sm:grid-cols-2">
+      <div className="min-w-0">
         <dt className="text-label uppercase text-text-muted">code</dt>
         <dd className="mt-1 font-mono text-data text-text-primary">
           {currency.code}
         </dd>
       </div>
-      <div>
+      <div className="min-w-0">
         <dt className="text-label uppercase text-text-muted">issuer</dt>
-        <dd className="mt-1 break-all font-mono text-data text-text-primary">
+        <dd className="mt-1 break-all font-mono text-body-sm text-text-primary">
           {currency.issuer}
         </dd>
       </div>
-      <div>
+      <div className="min-w-0">
         <dt className="text-label uppercase text-text-muted">status</dt>
         <dd className="mt-1 font-mono text-data text-text-primary">
           {currency.status}
         </dd>
       </div>
-      <div>
+      <div className="min-w-0">
         <dt className="text-label uppercase text-text-muted">
           display_decimals
         </dt>
@@ -166,21 +166,21 @@ function CurrencyFields({ currency }: { currency: StellarCurrency }) {
           {currency.display_decimals}
         </dd>
       </div>
-      <div className="sm:col-span-2">
+      <div className="min-w-0 sm:col-span-2">
         <dt className="text-label uppercase text-text-muted">name</dt>
-        <dd className="mt-1 font-mono text-data text-text-primary">
+        <dd className="mt-1 break-words text-body text-text-primary">
           {currency.name}
         </dd>
       </div>
-      <div className="sm:col-span-2">
+      <div className="min-w-0 sm:col-span-2">
         <dt className="text-label uppercase text-text-muted">desc</dt>
-        <dd className="mt-1 font-mono text-data text-text-primary">
+        <dd className="mt-1 break-words text-body text-text-primary">
           {currency.desc}
         </dd>
       </div>
-      <div className="sm:col-span-2">
+      <div className="min-w-0 sm:col-span-2">
         <dt className="text-label uppercase text-text-muted">conditions</dt>
-        <dd className="mt-1 font-mono text-data text-text-primary">
+        <dd className="mt-1 break-words text-body text-text-primary">
           {currency.conditions}
         </dd>
       </div>
@@ -256,29 +256,30 @@ function Sep1Panel() {
     <Card
       title="SEP-1 · stellar.toml"
       metadata="as declared in your stellar.toml"
+      className="min-w-0"
       footer={
         <span className="font-mono text-mono">/.well-known/stellar.toml</span>
       }
     >
-      <div className="space-y-6">
+      <div className="min-w-0 space-y-6">
         <div>
           <p className="mb-3 text-label font-semibold uppercase text-text-muted">
             [DOCUMENTATION]
           </p>
-          <dl className="grid gap-3 sm:grid-cols-2">
-            <div>
+          <dl className="grid min-w-0 gap-3 sm:grid-cols-2">
+            <div className="min-w-0">
               <dt className="text-label uppercase text-text-muted">
                 ORG_NAME
               </dt>
-              <dd className="mt-1 font-mono text-data text-text-primary">
+              <dd className="mt-1 break-words text-body text-text-primary">
                 {toml.DOCUMENTATION.ORG_NAME}
               </dd>
             </div>
-            <div>
+            <div className="min-w-0">
               <dt className="text-label uppercase text-text-muted">
                 ORG_OFFICIAL_EMAIL
               </dt>
-              <dd className="mt-1 font-mono text-data text-text-primary">
+              <dd className="mt-1 break-words text-body text-text-primary">
                 {toml.DOCUMENTATION.ORG_OFFICIAL_EMAIL}
               </dd>
             </div>
@@ -286,7 +287,7 @@ function Sep1Panel() {
         </div>
 
         {toml.CURRENCIES.map((currency, index) => (
-          <div key={`${currency.code}-${index}`}>
+          <div key={`${currency.code}-${index}`} className="min-w-0">
             <p className="mb-3 text-label font-semibold uppercase text-text-muted">
               [[CURRENCIES]]{toml.CURRENCIES.length > 1 ? ` #${index + 1}` : ""}
             </p>
