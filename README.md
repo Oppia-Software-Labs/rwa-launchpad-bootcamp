@@ -1,4 +1,4 @@
-# RWA Launchpad — Bolivia Stellar Soroban Bootcamp
+# RWA Launchpad Bolivia Stellar Soroban Bootcamp
 
 Hands-on starter repository for the Oppia Education Bolivia bootcamp. Over three days every team builds the **same RWA Launchpad** smart contract, adding one SEP layer per day. Admin operations (mint, whitelist, withdraw, pause) and user operations (invest, balance, transfer) are kept distinct on purpose — that split carries through to deploy scripts on Día 3.
 
